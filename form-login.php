@@ -1,6 +1,6 @@
 <html>
 
-    <?php include_once 'head.php'; ?>
+    <?php include_once 'templates/head.php'; ?>
 
     <script src="js/login.js"></script>
 
@@ -41,7 +41,7 @@
                 <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="">Iniciar sesión</button>
-                        <a type="button" class="">Crear usuario</a>
+                        <a href="form-registrar.php">Crear usuario</a>
                     </div>
                 </div>
 

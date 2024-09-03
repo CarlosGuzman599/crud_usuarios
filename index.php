@@ -1,8 +1,8 @@
 <?php
     session_start();
-    if(isset($_SESSION['nombre_cliente'])){
+    if(isset($_SESSION['nombre'])){
         echo "Nombre";
     }else{
-      include_once 'templates/form-login.php';
+      include_once 'form-login.php';
     }
 ?>  
