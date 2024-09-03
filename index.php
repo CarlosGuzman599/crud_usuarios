@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(isset($_SESSION['nombre'])){
-        echo "Nombre";
+      include_once 'templates/users.php';
     }else{
       include_once 'form-login.php';
     }
