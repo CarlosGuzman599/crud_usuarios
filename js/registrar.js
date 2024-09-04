@@ -9,10 +9,10 @@ $(document).ready(function(){
             error = error + 'Falta seleccion de genero \n';
         }
         if($("#password").val() == ''){
-            error = error + 'La contrasenia bacia \n';
+            error = error + 'La contraseña bacia \n';
         }
         if($("#password").val() != $("#password-confir").val()){
-            error = error + 'La contrasenia no coinside \n';
+            error = error + 'La contraseña no coinside \n';
         }
         if($("#nombre").val() == ''){
             error = error + 'Nombre bacio \n';
@@ -21,24 +21,31 @@ $(document).ready(function(){
             error = error + 'Email bacio \n';
         }
 
-        console.log(error);
-
         if(error == ''){
             $.ajax({
                 type: "POST",
                 url: `./agregar_usuario.php`,
                 data: {nombre: $("#nombre").val(),email: $("#email").val(), password: $("#password").val(), genero: genero},
                 success: function (response) {
-                    console.log(response);
-                    if(response.status == 200){
-    
+                    response = JSON.parse(response);
+                    if (response.respuesta == "correcto") {
+                        window.location.replace("./");
                     }else{
-    
-                    }   
+                        Swal.fire({
+                            icon: "error",
+                            title: "Contactar administrador",
+                            text: response,
+                        });
+                    }
                 }
+            });
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Falta Informacion",
+                text: error,
             });
         }
         
-
     });
 });

@@ -8,11 +8,16 @@ $(document).ready(function(){
             url: `./login.php`,
             data: {email: $("#email").val(), password: $("#password").val()},
             success: function (response) {
+                response = JSON.parse(response);
                 console.log(response);
-                if(response.status == 200){
-
+                if(response.respuesta == "correcto"){
+                    window.location.replace("./");
                 }else{
-
+                    Swal.fire({
+                        icon: "error",
+                        title: "Contactar administrador",
+                        text: response.tipo,
+                    });
                 }   
             }
         });

@@ -8,7 +8,7 @@
         <img class="img-login" src="img/FONDO.jpg" alt="">
         <div class="container center">
 
-            <form method="POST" id="form-registro" class="col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+            <form method="POST" id="form-registro" class="">
 
 
                 <div class="form-group col">
@@ -28,12 +28,12 @@
 
                 <div class="form-group col">
                     <label for="password-confir">Confirmar Contraseña</label>
-                    <input id="password-confir" type="password-confir" name="password-confir">
+                    <input id="password-confir" type="password" name="password-confir">
                 </div>
 
                 <label for="genero">Genero</label>
 
-                <input type="radio" id="contactChoice2" name="genero" value="f" />
+                <input type="radio" id="contactChoice2" name="genero" value="m" />
                 <label for="contactChoice2">Masculino</label>
 
                 <input type="radio" id="contactChoice3" name="genero" value="f" />

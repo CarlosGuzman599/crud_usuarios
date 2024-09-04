@@ -1,11 +1,11 @@
 <?php 
     if(isset($_POST)){
         if ($_POST['email'] == '' && $_POST['password'] == '') {
-            echo 3;
+            echo "Falta correo y password";
         }else if ($_POST['email'] == '') {
-            echo 2;
+            echo "Falta correo";;
         }else if ($_POST['password'] == '') {
-            echo 1;
+            echo "Falta password";;
         }else{
 
             $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
@@ -16,7 +16,7 @@
                 $stmt = $conn->prepare("SELECT id, nombre, password FROM usuario WHERE email = ?;");
                 $stmt->bind_param("s", $email);
                 $stmt->execute();
-                $stmt->bind_result($id, $nombre, $password);
+                $stmt->bind_result($id_db, $nombre_db, $password_db);
                 if($stmt->affected_rows){
                     $existe = $stmt->fetch();
     

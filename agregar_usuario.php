@@ -1,21 +1,21 @@
 <?php
     if (isset($_POST)) {
-        $error = '';
+        $respuesta = '';
         if($_POST['nombre'] == '' || $_POST['email'] == '' || $_POST['genero'] == '' || $_POST['password'] == ''){
-            $error = 'Campos incompletos';
+            $respuesta = 'Campos incompletos';
         }else{
             $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
             $genero = filter_var($_POST['genero'], FILTER_SANITIZE_STRING);
+            $fecha = date("Y-m-d H:i:s");
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-            $opciones = array('cost' => 12);
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT, $opciones);
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
             try {
                 include_once 'includes/db_conexion.php';
                 if(!exite_email($email, $conn)){
                     $stmt = $conn->prepare("INSERT INTO usuario (nombre, email, genero, fecha, password) VALUES (?, ?, ?, ?, ?)");
-                    $stmt->bind_param("sssss", $nombre, $email, $genero, date("Y-m-d H:i:s"), $hashed_password);
+                    $stmt->bind_param("sssss", $nombre, $email, $genero, $fecha, $hashed_password);
                     $stmt->execute();
                     if($stmt->affected_rows == 1) {
                         
@@ -46,10 +46,6 @@
                 );
             }
             echo json_encode($respuesta);
-    
-
-
-
         }
     }
 
