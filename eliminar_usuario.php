@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
     if (isset($_POST)) {
         try {
             include_once 'includes/db_conexion.php';

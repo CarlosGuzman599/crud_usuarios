@@ -38,11 +38,11 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" id="form-update" class="">
-
+                        <input id="id" type="hidden" name="id">
 
                         <div class="form-group col">
                             <label for="nombre">Nombre</label>
-                            <input id="nombre" type="text" name="nombre" >
+                            <input id="nombre" type="text" name="nombre">
                         </div>
 
                         <div class="form-group col">
